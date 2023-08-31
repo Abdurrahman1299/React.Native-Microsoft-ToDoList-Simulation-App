@@ -1,10 +1,4 @@
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { removeList } from "../store/redux/listsSlice";
@@ -23,8 +17,8 @@ export default function ListsList() {
     dispatch(removeListTasks(title));
   };
 
-  function onPressHandler(listTitle) {
-    navigation.navigate("ListPreview", { listTitle });
+  function onPressHandler({ listTitle, listId }) {
+    navigation.navigate("ListPreview", { listTitle, listId });
   }
 
   return (
@@ -34,7 +28,9 @@ export default function ListsList() {
           android_ripple={{ color: COLORS.RIPPLE }}
           key={item.id}
           style={styles.listContainer}
-          onPress={() => onPressHandler(item.title)}
+          onPress={() =>
+            onPressHandler({ listTitle: item.title, listId: item.id })
+          }
         >
           <View style={styles.titleContaier}>
             <IconButton
