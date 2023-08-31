@@ -5,6 +5,7 @@ import { useLayoutEffect } from "react";
 import { COLORS, SIZES } from "../constants/CONSTANTS";
 import Separator from "../components/UI/Separator";
 import CompletedTask from "../components/CompletedTask";
+import AddTask from "../components/AddTask";
 
 export default function AllTasksScreen({ navigation }) {
   //
@@ -21,39 +22,42 @@ export default function AllTasksScreen({ navigation }) {
   //
 
   return (
-    <ScrollView style={styles.container}>
-      {TASKS.length !== 0 ? (
-        <ScrollView style={styles.container}>
-          {TASKS.map((item) => (
-            <View key={item.id}>
-              <Task
-                title={item.title}
-                listTitle={item.listTitle}
-                id={item.id}
-              />
-            </View>
-          ))}
-        </ScrollView>
-      ) : (
-        <Text style={styles.text}>No Tasks to Show</Text>
-      )}
-      <Separator />
-      {completedTasks.length !== 0 ? (
-        <ScrollView style={styles.container}>
-          {completedTasks.map((item) => (
-            <View key={item.id}>
-              <CompletedTask
-                title={item.title}
-                listTitle={item.listTitle}
-                id={item.id}
-              />
-            </View>
-          ))}
-        </ScrollView>
-      ) : (
-        <Text style={styles.text}>No Completed Tasks Yet</Text>
-      )}
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView>
+        {TASKS.length !== 0 ? (
+          <ScrollView style={styles.container}>
+            {TASKS.map((item) => (
+              <View key={item.id}>
+                <Task
+                  title={item.title}
+                  listTitle={item.listTitle}
+                  id={item.id}
+                />
+              </View>
+            ))}
+          </ScrollView>
+        ) : (
+          <Text style={styles.text}>No Tasks to Show</Text>
+        )}
+        <Separator />
+        {completedTasks.length !== 0 ? (
+          <ScrollView style={styles.container}>
+            {completedTasks.map((item) => (
+              <View key={item.id}>
+                <CompletedTask
+                  title={item.title}
+                  listTitle={item.listTitle}
+                  id={item.id}
+                />
+              </View>
+            ))}
+          </ScrollView>
+        ) : (
+          <Text style={styles.text}>No Completed Tasks Yet</Text>
+        )}
+      </ScrollView>
+      <AddTask />
+    </View>
   );
 }
 

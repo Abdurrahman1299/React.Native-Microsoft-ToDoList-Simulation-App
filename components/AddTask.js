@@ -29,6 +29,7 @@ export default function AddTask({ listTitle }) {
         autoCapitalize="words"
       />
       <Pressable
+        onPress={addTaskHandler}
         style={({ pressed }) =>
           !pressed ? styles.btn : [styles.btn, { opacity: 0.7 }]
         }
