@@ -1,5 +1,4 @@
 import {
-  Button,
   Keyboard,
   Pressable,
   StyleSheet,
@@ -56,7 +55,7 @@ export default function Task({ title, listTitle, id }) {
     setIsEditing(false);
   }
   return (
-    <Pressable style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.taskBoxTitle}>
         <TouchableOpacity onPress={AddCompletedTaskHandler}>
           <IconButton
@@ -66,53 +65,76 @@ export default function Task({ title, listTitle, id }) {
             type="FontAwesome"
           />
         </TouchableOpacity>
-        <Pressable onLongPress={onPressHandler}>
-          {!isEditing ? (
+        {!isEditing ? (
+          <Pressable onLongPress={onPressHandler}>
             <View>
               <Text style={styles.taskTitle}>{title}</Text>
             </View>
-          ) : (
-            <View>
-              <TextInput
-                value={newTaskTitle}
-                onChangeText={(t) => setNewTaskTitle(t)}
-                autoFocus={true}
-                style={styles.taskTitle}
-              />
-              <Button title="save" onPress={saveEditingHandler} />
-              <Button title="cancel" onPress={() => setIsEditing(false)} />
-            </View>
-          )}
-        </Pressable>
-      </View>
-      <View style={styles.btnsContainer}>
-        <TouchableOpacity onPress={toggleDueToday}>
-          {taskInDueToday ? (
-            <IconButton
-              iconName="today"
-              size={SIZES.ICON}
-              color={COLORS.COLOR9}
-              type="Ionicons"
-            />
-          ) : (
-            <IconButton
-              iconName="today-outline"
-              size={SIZES.ICON}
-              color={COLORS.COLOR2}
-              type="Ionicons"
-            />
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity onPress={removeTaskHandler}>
-          <IconButton
-            color={COLORS.DELETE}
-            size={SIZES.ICON}
-            type="Feather"
-            iconName="trash-2"
+          </Pressable>
+        ) : (
+          <TextInput
+            value={newTaskTitle}
+            onChangeText={(t) => setNewTaskTitle(t)}
+            autoFocus={true}
+            style={styles.taskTitle}
           />
-        </TouchableOpacity>
+        )}
       </View>
-    </Pressable>
+      {!isEditing ? (
+        <View style={styles.btnsContainer}>
+          <TouchableOpacity onPress={toggleDueToday}>
+            {taskInDueToday ? (
+              <IconButton
+                iconName="today"
+                size={SIZES.ICON}
+                color={COLORS.COLOR9}
+                type="Ionicons"
+              />
+            ) : (
+              <IconButton
+                iconName="today-outline"
+                size={SIZES.ICON}
+                color={COLORS.COLOR2}
+                type="Ionicons"
+              />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity onPress={removeTaskHandler}>
+            <IconButton
+              color={COLORS.DELETE}
+              size={SIZES.ICON}
+              type="Feather"
+              iconName="trash-2"
+            />
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View style={styles.btnsContainer}>
+          <TouchableOpacity
+            onPress={saveEditingHandler}
+            style={{ alignItems: "center" }}
+          >
+            <IconButton
+              iconName="save"
+              size={SIZES.ICON}
+              color={COLORS.COLOR7}
+              type="Feather"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setIsEditing(false)}
+            style={{ alignItems: "center" }}
+          >
+            <IconButton
+              iconName="close-circle"
+              size={SIZES.ICON + 2}
+              color={COLORS.DELETE}
+              type="Ionicons"
+            />
+          </TouchableOpacity>
+        </View>
+      )}
+    </View>
   );
 }
 
@@ -141,5 +163,14 @@ const styles = StyleSheet.create({
     flex: 0.22,
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  saveText: {
+    fontSize: 12,
+    color: COLORS.TEXT,
   },
 });

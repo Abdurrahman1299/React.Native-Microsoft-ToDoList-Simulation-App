@@ -24,7 +24,8 @@ const tasksSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      state.tasks.push(action.payload);
+      if (action.payload.title === "") return;
+      state.tasks = [action.payload, ...state.tasks];
     },
 
     removeTask: (state, action) => {
