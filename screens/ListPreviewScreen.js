@@ -9,6 +9,7 @@ import IconButton from "../components/UI/IconButton";
 import { useDispatch } from "react-redux";
 import { removeList } from "../store/redux/listsSlice";
 import { removeListTasks } from "../store/redux/tasksSlice";
+import { removeListCompletedTasks } from "../store/redux/completedTasksSlice";
 
 export default function ListPreviewScreen({ navigation, route }) {
   //
@@ -17,6 +18,7 @@ export default function ListPreviewScreen({ navigation, route }) {
   function handleRemoveList() {
     dispatch(removeList(route.params.listId));
     dispatch(removeListTasks(route.params.listTitle));
+    dispatch(removeListCompletedTasks(route.params.listTitle));
     navigation.goBack();
   }
   //

@@ -20,7 +20,8 @@ const completedTasksSlice = createSlice({
 
     removeListCompletedTasks: (state, action) => {
       state.completedTasks = state.completedTasks.filter(
-        (item) => item.listTitle !== action.payload.listTitle.slice(0, -9)
+        // (item) => item.listTitle !== action.payload.listTitle
+        (item) => item.listTitle.slice(0, -9) !== action.payload
       );
     },
   },

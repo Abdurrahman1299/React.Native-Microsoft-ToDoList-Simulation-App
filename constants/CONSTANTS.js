@@ -20,7 +20,7 @@ export const SIZES = {
   MGH: 18,
   PDV: 10,
   PDH: 14,
-  FONT: 18,
-  ICON: 25,
-  LICON: 29,
+  FONT: 16,
+  ICON: 23,
+  LICON: 25,
 };

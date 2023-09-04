@@ -5,6 +5,7 @@ import { removeList } from "../store/redux/listsSlice";
 import { removeListTasks } from "../store/redux/tasksSlice";
 import { COLORS, SIZES } from "../constants/CONSTANTS";
 import IconButton from "./UI/IconButton";
+import { removeListCompletedTasks } from "../store/redux/completedTasksSlice";
 
 export default function ListsList() {
   //
@@ -15,6 +16,7 @@ export default function ListsList() {
   const removeListHandler = (id, title) => {
     dispatch(removeList(id));
     dispatch(removeListTasks(title));
+    dispatch(removeListCompletedTasks(title));
   };
 
   function onPressHandler({ listTitle, listId }) {
@@ -23,7 +25,7 @@ export default function ListsList() {
   return (
     <ScrollView>
       {LISTS.length === 0 ? (
-        <Text style={styles.text}>Add List of Tasks</Text>
+        <Text style={styles.text}>Add New Lists</Text>
       ) : (
         LISTS.map((item) => (
           <Pressable
