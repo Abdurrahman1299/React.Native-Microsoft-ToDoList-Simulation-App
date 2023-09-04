@@ -35,9 +35,4 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.COLOR10,
   },
-  themeBtn: {
-    position: "absolute",
-    right: 20,
-    top: 0,
-  },
 });

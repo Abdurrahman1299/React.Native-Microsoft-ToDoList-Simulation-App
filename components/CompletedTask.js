@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeCompletedTask } from "../store/redux/completedTasksSlice";
 import { COLORS, SIZES } from "../constants/CONSTANTS";
 import IconButton from "./UI/IconButton";

@@ -25,10 +25,15 @@ export default function PermanentList({ title, screen, color, name }) {
 
 const styles = StyleSheet.create({
   list: {
+    position: "relative",
+    marginBottom: 2,
+    backgroundColor: COLORS.TASKBG,
     paddingVertical: SIZES.PDV,
     paddingHorizontal: SIZES.PDH,
     flexDirection: "row",
     alignItems: "center",
+    borderRadius: 5,
+    overflow: "hidden",
   },
   text: {
     fontSize: SIZES.FONT,

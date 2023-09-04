@@ -10,7 +10,7 @@ export default function TasksList({ listTitle }) {
   const specificTasks = TASKS.filter((item) => item.listTitle === listTitle);
 
   return (
-    <View style={styles.container}>
+    <View>
       <ScrollView>
         {specificTasks.length === 0 ? (
           <Text style={styles.text}>No Tasks in The List</Text>
@@ -31,10 +31,9 @@ export default function TasksList({ listTitle }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
   text: {
     fontSize: SIZES.FONT,
-    color: COLORS.COLOR8,
+    color: COLORS.COLOR7,
     fontWeight: "bold",
     textAlign: "center",
   },

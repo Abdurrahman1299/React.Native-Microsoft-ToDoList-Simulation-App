@@ -5,17 +5,20 @@ import ListPreviewScreen from "./screens/ListPreviewScreen";
 import AllTasksScreen from "./screens/AllTasksScreen";
 import TodayScreen from "./screens/TodayScreen";
 import { Provider } from "react-redux";
-import store from "./store/redux/store";
+import reduxStore from "./store/redux/store";
 import { Keyboard, Pressable } from "react-native";
 import { COLORS } from "./constants/CONSTANTS";
 import { StatusBar } from "expo-status-bar";
+import { PersistGate } from "redux-persist/integration/react";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+  const { store, persistor } = reduxStore();
   return (
     <Pressable style={{ flex: 1 }} onPress={() => Keyboard.dismiss()}>
       <StatusBar style="light" />
       <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}></PersistGate>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{

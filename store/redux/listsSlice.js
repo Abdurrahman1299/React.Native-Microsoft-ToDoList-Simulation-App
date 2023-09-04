@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  lists: [
-    { id: Date.now(), title: "list1" },
-    { id: Date.now() + 1786, title: "list2" },
-    { id: Date.now() + 2786786, title: "list3" },
-    { id: Date.now() + 3786786, title: "list4" },
-    { id: Date.now() + 7866784, title: "list5" },
-  ],
+  lists: [],
 };
 
 const listsSlice = createSlice({

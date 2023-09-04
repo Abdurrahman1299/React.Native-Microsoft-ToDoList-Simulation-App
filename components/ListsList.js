@@ -20,40 +20,43 @@ export default function ListsList() {
   function onPressHandler({ listTitle, listId }) {
     navigation.navigate("ListPreview", { listTitle, listId });
   }
-
   return (
     <ScrollView>
-      {LISTS.map((item) => (
-        <Pressable
-          android_ripple={{ color: COLORS.RIPPLE }}
-          key={item.id}
-          style={styles.listContainer}
-          onPress={() =>
-            onPressHandler({ listTitle: item.title, listId: item.id })
-          }
-        >
-          <View style={styles.titleContaier}>
-            <IconButton
-              color={COLORS.COLOR5}
-              iconName={"list"}
-              size={SIZES.ICON}
-              type="Feather"
-            />
-            <Text style={styles.title}>{item.title}</Text>
-          </View>
+      {LISTS.length === 0 ? (
+        <Text style={styles.text}>Add List of Tasks</Text>
+      ) : (
+        LISTS.map((item) => (
           <Pressable
-            onPress={() => removeListHandler(item.id, item.title)}
-            style={styles.delBtn}
+            android_ripple={{ color: COLORS.RIPPLE }}
+            key={item.id}
+            style={styles.listContainer}
+            onPress={() =>
+              onPressHandler({ listTitle: item.title, listId: item.id })
+            }
           >
-            <IconButton
-              color={COLORS.DELETE}
-              iconName={"trash-2"}
-              size={SIZES.ICON}
-              type="Feather"
-            />
+            <View style={styles.titleContaier}>
+              <IconButton
+                color={COLORS.COLOR5}
+                iconName={"list"}
+                size={SIZES.ICON}
+                type="Feather"
+              />
+              <Text style={styles.title}>{item.title}</Text>
+            </View>
+            <Pressable
+              onPress={() => removeListHandler(item.id, item.title)}
+              style={styles.delBtn}
+            >
+              <IconButton
+                color={COLORS.DELETE}
+                iconName={"trash-2"}
+                size={SIZES.ICON}
+                type="Feather"
+              />
+            </Pressable>
           </Pressable>
-        </Pressable>
-      ))}
+        ))
+      )}
     </ScrollView>
   );
 }
@@ -75,5 +78,10 @@ const styles = StyleSheet.create({
     color: COLORS.TEXT,
     fontSize: SIZES.FONT,
     marginLeft: SIZES.MGH,
+  },
+  text: {
+    color: COLORS.COLOR7,
+    fontSize: SIZES.FONT,
+    textAlign: "center",
   },
 });
