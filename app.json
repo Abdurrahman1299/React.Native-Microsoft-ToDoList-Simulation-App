@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Todo List App",
-    "slug": "todo_list_app",
+    "slug": "todo-list-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,18 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#111111"
-      },
-      "package": "com.abdurrahman09.todo_list_app"
+      }
     },
     "web": {
-      "favicon": "./assets/icon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "507100fd-2fd6-437b-b3ec-da12f6c967db"
-      }
+      "favicon": "./assets/favicon.png"
     }
   }
 }

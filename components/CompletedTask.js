@@ -33,7 +33,10 @@ export default function CompletedTask({ id, title, listTitle }) {
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <TouchableOpacity onPress={removeCompletedTaskHandler}>
+      <TouchableOpacity
+        onPress={removeCompletedTaskHandler}
+        style={styles.delBtn}
+      >
         <IconButton
           color={COLORS.RIPPLE}
           size={SIZES.ICON}
@@ -60,11 +63,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: SIZES.FONT,
     color: COLORS.TEXT,
-    marginLeft: SIZES.MGH,
+    marginHorizontal: SIZES.MGH,
   },
   taskBoxTitle: {
     flex: 1,
     flexDirection: "row",
+    alignItems: "center",
+  },
+  delBtn: {
+    justifyContent: "center",
     alignItems: "center",
   },
 });

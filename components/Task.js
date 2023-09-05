@@ -157,12 +157,13 @@ const styles = StyleSheet.create({
   taskTitle: {
     fontSize: SIZES.FONT,
     color: COLORS.TEXT,
-    marginLeft: SIZES.MGH,
+    marginHorizontal: SIZES.MGH,
   },
   btnsContainer: {
     flex: 0.22,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   buttons: {
     flexDirection: "row",

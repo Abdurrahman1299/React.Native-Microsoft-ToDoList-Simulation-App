@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   list: {
     position: "relative",
     marginBottom: 2,
-    backgroundColor: COLORS.TASKBG,
     paddingVertical: SIZES.PDV,
     paddingHorizontal: SIZES.PDH,
     flexDirection: "row",

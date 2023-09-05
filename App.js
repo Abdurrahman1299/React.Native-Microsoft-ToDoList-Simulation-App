@@ -18,25 +18,28 @@ export default function App() {
     <Pressable style={{ flex: 1 }} onPress={() => Keyboard.dismiss()}>
       <StatusBar style="light" />
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}></PersistGate>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerShadowVisible: false,
-              headerTintColor: COLORS.HEADS,
-              headerStyle: { backgroundColor: COLORS.COLOR10 },
-            }}
-          >
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{ headerTitle: "ToDo List Application" }}
-            />
-            <Stack.Screen name="ListPreview" component={ListPreviewScreen} />
-            <Stack.Screen name="AllTasks" component={AllTasksScreen} />
-            <Stack.Screen name="Today" component={TodayScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationContainer>
+            <Stack.Navigator
+              screenOptions={{
+                headerShadowVisible: false,
+                headerTintColor: COLORS.HEADS,
+                headerStyle: { backgroundColor: COLORS.COLOR10 },
+                animation: "slide_from_right",
+                animationDuration: 50,
+              }}
+            >
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{ headerTitle: "ToDo List Application" }}
+              />
+              <Stack.Screen name="ListPreview" component={ListPreviewScreen} />
+              <Stack.Screen name="AllTasks" component={AllTasksScreen} />
+              <Stack.Screen name="Today" component={TodayScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </PersistGate>
       </Provider>
     </Pressable>
   );
