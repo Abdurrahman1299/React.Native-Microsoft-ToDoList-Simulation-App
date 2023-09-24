@@ -6,7 +6,7 @@ import AllTasksScreen from "./screens/AllTasksScreen";
 import TodayScreen from "./screens/TodayScreen";
 import { Provider } from "react-redux";
 import reduxStore from "./store/redux/store";
-import { Keyboard, Pressable } from "react-native";
+import { View } from "react-native";
 import { COLORS } from "./constants/CONSTANTS";
 import { StatusBar } from "expo-status-bar";
 import { PersistGate } from "redux-persist/integration/react";
@@ -15,11 +15,11 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const { store, persistor } = reduxStore();
   return (
-    <Pressable style={{ flex: 1 }} onPress={() => Keyboard.dismiss()}>
+    <View style={{ flex: 1 }}>
       <StatusBar style="light" />
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <NavigationContainer>
+      <NavigationContainer>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
             <Stack.Navigator
               screenOptions={{
                 headerShadowVisible: false,
@@ -38,9 +38,9 @@ export default function App() {
               <Stack.Screen name="AllTasks" component={AllTasksScreen} />
               <Stack.Screen name="Today" component={TodayScreen} />
             </Stack.Navigator>
-          </NavigationContainer>
-        </PersistGate>
-      </Provider>
-    </Pressable>
+          </PersistGate>
+        </Provider>
+      </NavigationContainer>
+    </View>
   );
 }
