@@ -26,10 +26,7 @@ export default () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         immutableCheck: false,
-        serializableCheck: {
-          warnAfter: false,
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
+        serializableCheck: false,
       }),
   });
   let persistor = persistStore(store);
