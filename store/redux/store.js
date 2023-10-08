@@ -25,9 +25,9 @@ export default () => {
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
-        immutableCheck: { warnAfter: 250 },
+        immutableCheck: false,
         serializableCheck: {
-          warnAfter: 250,
+          warnAfter: false,
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
       }),
